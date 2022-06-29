@@ -36,7 +36,7 @@ class Server:
 
 
 if __name__ == "__main__":
-    server_address = 'http://sunny-motorsports.com'
+    server_address = 'hostname'
     ports_to_scan = [9601, 9602, 9603, 9604, 9605, 9606, 9607]
 
     servers = []

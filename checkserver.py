@@ -28,10 +28,10 @@ class Server:
                 'track': self.track}
         return data
 
-    def return_metrics(self):
+    def return_metrics(self, instance_number):
         data = [f"# HELP server players online\n",
                 f"# TYPE server_name summary\n",
-                "server_online_players{" + f'server_name="{self.name}"' + "} " + f"{self.clients}\n"]
+                f"server_online_players_server_{instance_number}" + "{" + f'server_name="{self.name}"' + "} " + f"{self.clients}\n"]
         return data
 
 
@@ -54,7 +54,8 @@ if __name__ == "__main__":
     f = open(FILE, 'w')
 
     for server in servers:
-        for line in server.return_metrics():
+        instance_number = servers.index(server) + 1
+        for line in server.return_metrics(instance_number):
             print(line)
             f.write(line)
             #time.sleep(5)
